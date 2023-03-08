@@ -1,0 +1,11 @@
+<section class="video">
+  <h2>Webcam Capture</h2>
+  <div class="video-block">
+    <video #video id="video-stream" class="video-stream" width="600" height="500" autoplay></video>
+    <div class="buttons">
+      <button (click)="onCapture()" class="btn btn-primary me-2">Capture</button>
+      <button class="btn btn-success" (click)="onCompleted()">Completed</button>
+    </div>
+    <canvas #canvas id="canvas" width="600" height="500"></canvas>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<ng-container *ngIf="isError">
+  <p class="text-danger pt-2" *ngIf="control && control.errors && control.errors['required']">{{controlName}} is required.</p>
+  <p class="text-danger pt-2" *ngIf="control && control.errors && control.errors['minlength']">
+    <ng-container *ngIf="customMessage; else elseMinlength">
+      {{customMessage}}
+    </ng-container>
+    <ng-template #elseMinlength>
+      {{controlName}} should have minimum {{control.errors['minlength'].requiredLength}} characters.
+    </ng-template>
+  </p>
+  <p class="text-danger pt-2" *ngIf="control && control.errors && control.errors['maxlength']">
+    <ng-container *ngIf="customMessage; else elseMinlength">
+      {{customMessage}}
+    </ng-container>
+    <ng-template #elseMinlength>
+      {{controlName}} should have maximum {{control.errors['maxlength'].requiredLength}} characters.
+    </ng-template>
+  </p>
+  <p class="text-danger pt-2" *ngIf="control && control.errors && control.errors['pattern']">
+    <ng-container *ngIf="customMessage; else elsePattern">
+      {{customMessage}}
+    </ng-container>
+    <ng-template #elsePattern>
+      {{controlName}} does not match the requirement.
+    </ng-template>
+  </p>
+</ng-container>

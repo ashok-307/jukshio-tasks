@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.cdk-overlay-pane {
+  margin-top: 10px;
+  &.error {
+    border: 1px solid red;
+    border-radius: 5px;
+    .mat-mdc-dialog-title {
+      color: red;
+    }
+  }
+}

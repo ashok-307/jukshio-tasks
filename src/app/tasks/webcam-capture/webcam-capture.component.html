@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+
+    <ul class="d-flex align-items-center p-0 m-0 mb-2">
+      <li class="px-3 py-2 text-center" [routerLink]="submenu.url" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngFor="let submenu of subMenus; let ind = index;">{{submenu.name}}</li>
+    </ul>
+    <hr>
+    <router-outlet></router-outlet>
+
+  </div>
+</div>

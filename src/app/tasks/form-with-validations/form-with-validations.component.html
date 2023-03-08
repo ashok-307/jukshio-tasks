@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="row">
+    <div class="form-container p-3">
+      <h2>User Details</h2>
+      <div class="forms">
+        <form [formGroup]="userForm" #user="ngForm" (ngSubmit)="onFormSubmit()">
+          <!-- Name -->
+          <div class="form-group mb-3">
+            <label for="name" class="form-label">Name</label>
+            <div class="d-flex">
+              <input type="text" class="form-control me-2" formControlName="beforeName" style="width: 60px; display: inline-block;" />
+              <input
+                type="text"
+                autocomplete="off"
+                (keydown)="onInputNameKeyDown($event)"
+                placeholder="Enter Name"
+                class="form-control"
+                id="name"
+                formControlName="name"
+              />
+            </div>
+            <ng-container *ngIf="userForm.get('name')?.dirty || user.submitted">
+              <form-error [isError]="!!userForm.get('name')?.errors" [control]="userForm.get('name')" [controlName]="'Name'"></form-error>
+              <p *ngIf="userForm.get('name')?.value && userForm.errors && userForm.errors['name']" class="text-danger">Name property should start with capital letter.</p>
+            </ng-container>
+          </div>
+          <!-- Gender -->
+          <div class="form-group mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <div class="genders">
+              <label for="male" class="me-1">Male</label>
+              <input
+                type="radio"
+                value="Male"
+                id="male"
+                class="me-2"
+                formControlName="gender"
+              />
+
+              <label for="female" class="me-1">Female</label>
+              <input
+                type="radio"
+                value="Female"
+                id="female"
+                formControlName="gender"
+              />
+            </div>
+            <ng-container *ngIf="userForm.get('gender')?.dirty || user.submitted">
+              <form-error [isError]="!!userForm.get('gender')?.errors" [control]="userForm.get('gender')" [controlName]="'Gender'"></form-error>
+            </ng-container>
+
+          </div>
+          <!-- Phone -->
+          <div class="form-group mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input
+              type="text"
+              autocomplete="off"
+              placeholder="Enter Phone"
+              (keydown)="onInputKeyDown($event)"
+              class="form-control"
+              [maxlength]="10"
+              id="phone"
+              formControlName="phone"
+            />
+            <ng-container *ngIf="userForm.get('phone')?.dirty || user.submitted">
+              <form-error [isError]="!!userForm.get('phone')?.errors" [control]="userForm.get('phone')" [controlName]="'Phone'" [customMessage]="'Phone should have 10 digits.'"></form-error>
+            </ng-container>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              autocomplete="off"
+              placeholder="Enter Email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+            />
+            <ng-container *ngIf="userForm.get('email')?.dirty || user.submitted">
+              <form-error [isError]="!!userForm.get('email')?.errors" [control]="userForm.get('email')" [controlName]="'Email'"></form-error>
+            </ng-container>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+            />
+            <ng-container *ngIf="userForm.get('password')?.dirty || user.submitted">
+              <form-error [isError]="!!userForm.get('password')?.errors" [control]="userForm.get('password')" [controlName]="'Password'" [customMessage]="'Password should have at least one capital letter, 1 number, 1 special character and minimum length 10'"></form-error>
+            </ng-container>
+          </div>
+
+          <!-- Buttons -->
+          <div class="buttons">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
