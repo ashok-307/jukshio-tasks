@@ -1,1 +1,11 @@
-<p>draw-rect works!</p>
+<h2>Draw Rectangle</h2>
+
+<div class="image" #imageBlock (mouseup)="onUp($event)" (mousemove)="onMove($event)" (mousedown)="onDown($event)">
+  <figure>
+    <img src="./assets/images/bg.jpg" alt="pic" draggable="false" width="100%">
+  </figure>
+</div>
+
+<div class="buttons py-2">
+  <button class="btn btn-success" (click)="onComplete()">Complete</button>
+</div>
